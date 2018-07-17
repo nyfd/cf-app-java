@@ -4,13 +4,23 @@ repositories {
     mavenCentral()
 }
 
-mainClassName = "ch.sample.app.cloudfoundry.JavaApp"
-
 dependencies {
     compile group: 'com.sparkjava', name: 'spark-core', version: '2.7.2'
     compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
 }
 
+mainClassName = 'ch.sample.app.cloudfoundry.JavaApp'
+
+version = '0.0.1'
+
 clean {
     delete 'out'
+}
+
+distributions.main { dist ->
+    contents {
+        eachFile { file ->
+            file.path -= "$dist.baseName-$version/"
+        }
+    }
 }
