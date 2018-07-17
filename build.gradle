@@ -1,0 +1,16 @@
+apply plugin: 'application'
+
+repositories {
+    mavenCentral()
+}
+
+mainClassName = "ch.sample.app.cloudfoundry.JavaApp"
+
+dependencies {
+    compile group: 'com.sparkjava', name: 'spark-core', version: '2.7.2'
+    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
+}
+
+clean {
+    delete 'out'
+}
