@@ -1,20 +1,22 @@
-apply plugin: 'application'
+plugins {
+    id "application"
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    compile group: 'com.sparkjava', name: 'spark-core', version: '2.7.2'
-    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
+    compile ("com.sparkjava:spark-core:2.7.2")
+    compile ("org.slf4j:slf4j-simple:1.7.25")
 }
 
-mainClassName = 'ch.sample.app.cloudfoundry.JavaApp'
+mainClassName = "ch.sample.app.cloudfoundry.JavaApp"
 
-version = '0.0.1'
+version = "0.0.1"
 
 clean {
-    delete 'out'
+    delete "out"
 }
 
 distributions.main { dist ->
