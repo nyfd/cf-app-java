@@ -1,17 +1,11 @@
 language: java
-
 stages:
 - test
 - name: deploy
   if: branch = master
-
 jobs:
   include:
   - stage: test
     script: "./gradlew check"
   - stage: deploy
     script: "./gradlew distZip cf-push -Pcf.ccUser=${CF_USER} -Pcf.ccPassword=${CF_PASSWORD}"
-env:
-  global:
-  - secure: JJf/AYSsI6Vqi5GdKijWYRfRouOsG9ztv7z7b1cTMt+aXSDBW70ZbW1EHApss/E0tvxhJ9a+7VOdIoTeBZEYOyyfFzqLI/KsrB/194xECyTa0Qn6jrtKHq4TAJ70NtW8Y4tEhVj6z7OU/mVClL2Yx74G/V6SJ51MQXQADG5U49vlyfjpuvgEWcni6x1Qjpi03GsdMqT7ki5Cxoj3IEANDZa6/gBZ4X2cGJXsRXYAJ6umi/hnqsaKPNDnkLIvfgaw9wqioB73Wqaio+wbZfi+2DL8UDxgzTMViHmi6lBoMSL9eVTRVrAVZL4AVkxSD9o92m7gC+1m9A5uHVS4Feu4zN6QElKsEns5xkquimDxyiQC79JVH6vEu7hc2kFHxKsOm68otQk34RhSAmaiOkOyYWtMl5fYI/YXv52dywt5lAQa02Taw5yR80xTt9bke+SXL5TLaO8J88zuqoTofWyGmFiYfgJmwsPcSw+Dpt6oLzrJLXxFUYFG9FjRA2s2kBmqKRbuBT3LIM6Sxyp3oAjJ1gxNHlFi5hbWOFAUQSuJjhxeCmEtZuzDztp9S/OUF6Zx846uvQEzBBH+AUFV12Ns7SJaAncALb10rHea+ZKAOoVOvHDpRSQuPWVTjthD5zxUvutpD7dlks1Xvm6CVQz803O428bMf683i+Fl0H8GUmU=
-  - secure: l20DAX68/uv1KL2A59wubmNn1YjrW5DN5nRHPxCrhDDZE/xMDkpm9/PsMEmk1nj2yE5Auz4Ll2+3g+4ZmDjONkLFVUw7lP3pwDcNs/PDm2WvOHIvxQGt6AxluhPNuVXOjYifZ3gz80IXklqets/L12xZyY4cknl14+B54xVNahVzXyVkQTZYKKLJaZodGo5LnxwnQjQX9khwoNoeYE1QDj6eaRqiqVb0GRFjGGe89qcI79cr4YMrrCieXYyoc0QS/z9D+vTYM9Oz6qBNuxX9J3vhf7srogVdm0FCJNx6XQQKy8jTzOnwBte1BGk/CHcTKIyWf+a1jp/MMedbcS1k+VvzI2yJNAmJ1jT6ncZejGR8hBNYAD5dCaBVA+sCY/HMj1WJme5B8Zi2tRZlAXdTl5Wxi7cY9nQFSkSgqNQU2pFyrkg5mFYdUF60WB/x4nl1idrUYN6gcisE4o2nIaD3TEeOgxcGVpj2dSHzq03JrwyrggBeZpI6f0a0opL3kvX7sLM17e3f5Ps1OiNrmPDS1aAp4wRBt5JCOgpOs63Gxqqa2oRTCELn2E8uaQnhX/kpgDvs4zFQf6I6rcBi3eEDOZYJjiyJLBjYraXnChIAvR91IbIQXQ47urRY64zQ0jW/cYqIZuATXnc1WlEypaCJto02ZwdLW6LP4tcYywzwcPg=
