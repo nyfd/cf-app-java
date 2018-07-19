@@ -1,4 +1,5 @@
 plugins {
+    id "com.github.pivotalservices.cf-app" version "2.3.0-rc.1"
     id "application"
 }
 
@@ -15,6 +16,9 @@ mainClassName = "ch.sample.app.cloudfoundry.JavaApp"
 
 version = "0.0.1"
 
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
 clean {
     delete "out"
 }
@@ -25,4 +29,23 @@ distributions.main { dist ->
             file.path -= "$dist.baseName-$version/"
         }
     }
+}
+
+cfConfig {
+    //CF Details
+    ccHost = "api.lyra-836.appcloud.swisscom.com"
+    org = "cf-demo-org"
+    space = "dev"
+
+    //App Details
+    name = "cf-app-java"
+    host = "cf-app-java"
+    filePath = distZip.archivePath
+    path = ""
+    domain = "applicationcloud.io"
+    instances = 1
+    memory = 640
+
+    //Env and services
+    buildpack = "https://github.com/cloudfoundry/java-buildpack.git"
 }
