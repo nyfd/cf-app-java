@@ -9,3 +9,10 @@ jobs:
     script: "./gradlew check"
   - stage: deploy
     script: "./gradlew distZip cf-push -Pcf.ccUser=${CF_USER} -Pcf.ccPassword=${CF_PASSWORD}"
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+  - $HOME/.gradle/caches/
+  - $HOME/.gradle/wrapper/
